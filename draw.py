@@ -8,4 +8,7 @@ x=np.arange(100)
 
 y=retta(x)
 
+seno=np.sin(x)
+
 plt.plot(x,y)
+plt.plot(seno)
