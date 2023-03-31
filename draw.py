@@ -12,3 +12,5 @@ seno=np.sin(x)
 
 plt.plot(x,y)
 plt.plot(seno)
+
+plt.show()
