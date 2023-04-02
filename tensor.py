@@ -19,8 +19,8 @@ s3_s3 = np.kron(s3, s3)
 
 # objective function parameters
 
-biases = np.array([1,1])
-coupling_strengths = -2
+biases = np.array([0.1, 0.1])
+coupling_strengths = -0.2
 
 # QPU anneal parameters
 
@@ -39,59 +39,62 @@ def H(t):
     
 # eigenvalues and eigenvectors
 
-
-E = np.empty([4, 1])
+e = np.empty([4, 1])
+E = np.empty([4, 4])
 
 for i in range (0, len(s)):
-    EigValues = np.linalg.eigvalsh(H(i))
+    EigValues, EigVectors = np.linalg.eig(H(i))
     permute = EigValues.argsort()
     EigValues = EigValues[permute]
-    E = np.append(E, EigValues)
+    EigVectors = EigVectors[:,permute]
+    e = np.append(e, EigValues)
+    E = np.append(E, EigVectors, axis = 0)
 
 for i in range (0, 4): 
-    E = np.delete(E, 0)
-
-print(len(E))
-print(E[0], E[4])
+    e = np.delete(e, 0)
+    E = np.delete(E, 0, 0)
 
 e0 = np.empty([4, 1])
-
-for i in range(0, len(E), 4):
-    e0 = np.append(e0, E.item(i))
-
-for i in range (0, 4): 
-    e0 = np.delete(e0, 0)
-    
 e1 = np.empty([4, 1])
-
-for i in range(1, len(E), 4):
-    e1 = np.append(e1, E.item(i))
-
-for i in range (0, 4): 
-    e1 = np.delete(e1, 0)
-    
 e2 = np.empty([4, 1])
-
-for i in range(2, len(E), 4):
-    e2 = np.append(e2, E.item(i))
-
-for i in range (0, 4): 
-    e2 = np.delete(e2, 0)
-
 e3 = np.empty([4, 1])
 
-for i in range(3, len(E), 4):
-    e3 = np.append(e3, E.item(i))
+for i in range(0, len(e), 4):
+    e0 = np.append(e0, e.item(i))
 
-for i in range (0, 4): 
-    e3 = np.delete(e3, 0)
+for i in range(1, len(e), 4):
+    e1 = np.append(e1, e.item(i))
+
+for i in range(2, len(e), 4):
+    e2 = np.append(e2, e.item(i))
     
+for i in range(3, len(e), 4):
+    e3 = np.append(e3, e.item(i))
+   
+for i in range (0, 4): 
+    e0 = np.delete(e0, 0)
+    e1 = np.delete(e1, 0)
+    e2 = np.delete(e2, 0)
+    e3 = np.delete(e3, 0)
+
+print('The initial eigenvectors are:')
+    
+for i in range (0, 4):
+    print(E[i])
+
+print('The final eigenvectors are:')
+    
+for i in range (0, 4):
+    print('e', 3 - i, ':', E[len(E) - i - 1])
+        
+# drawing
+
 plt.grid()
 plt.plot(s, A, c = 'red')
 plt.plot(s, B, c = 'blue')
-plt.plot(s, e0, c = 'green')
-plt.plot(s, e1, c = 'green')
-plt.plot(s, e2, c = 'green')
+plt.plot(s, e0, c = 'yellow')
+plt.plot(s, e1, c = 'black')
+plt.plot(s, e2, c = 'purple')
 plt.plot(s, e3, c = 'green')
 plt.show()
 plt.grid()
