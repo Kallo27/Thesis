@@ -49,6 +49,7 @@ for i in range (0, len(s)):
     EigVectors = EigVectors[:,permute]
     e = np.append(e, EigValues)
     E = np.append(E, EigVectors, axis = 0)
+    print(EigVectors[:,])
 
 for i in range (0, 4): 
     e = np.delete(e, 0)
@@ -76,24 +77,30 @@ for i in range (0, 4):
     e1 = np.delete(e1, 0)
     e2 = np.delete(e2, 0)
     e3 = np.delete(e3, 0)
-
-print('The initial eigenvectors are:')
     
-for i in range (0, 4):
-    print(E[i])
+for i in range (0, len(e0)):
+    e1[i] = e1[i] - e0[i]
+    e2[i] = e2[i] - e0[i]    
+    e3[i] = e3[i] - e0[i]
+    e0[i] = e0[i] - e0[i]
 
+# print('The initial eigenvectors are:')
+#     
+# for i in range (0, 4):
+#     print(E[i])
+# 
 print('The final eigenvectors are:')
     
 for i in range (0, 4):
     print('e', 3 - i, ':', E[len(E) - i - 1])
+    
+
         
 # drawing
 
 plt.grid()
-plt.plot(s, A, c = 'red')
-plt.plot(s, B, c = 'blue')
-plt.plot(s, e0, c = 'yellow')
-plt.plot(s, e1, c = 'black')
+plt.plot(s, e0, c = 'black')
+plt.plot(s, e1, c = 'yellow')
 plt.plot(s, e2, c = 'purple')
 plt.plot(s, e3, c = 'green')
 plt.show()
