@@ -19,7 +19,7 @@ s3_s3 = np.kron(s3, s3)
 
 # objective function parameters
 
-biases = np.array([0.1, 0.1])
+biases = np.array([0.1, 0.3])
 coupling_strengths = -0.2
 
 # QPU anneal parameters
@@ -49,7 +49,9 @@ for i in range (0, len(s)):
     EigVectors = EigVectors[:,permute]
     e = np.append(e, EigValues)
     E = np.append(E, EigVectors, axis = 0)
-    print(EigVectors[:,])
+    
+df = pd.DataFrame(EigVectors, columns=['e0', 'e1', 'e2', 'e3'])
+df.to_excel('final_eigenvectors.xlsx', index=False)
 
 for i in range (0, 4): 
     e = np.delete(e, 0)
@@ -84,19 +86,10 @@ for i in range (0, len(e0)):
     e3[i] = e3[i] - e0[i]
     e0[i] = e0[i] - e0[i]
 
-# print('The initial eigenvectors are:')
-#     
-# for i in range (0, 4):
-#     print(E[i])
-# 
-print('The final eigenvectors are:')
-    
-for i in range (0, 4):
-    print('e', 3 - i, ':', E[len(E) - i - 1])
-    
-
-        
+ 
 # drawing
+
+print('The final eigenvectors are saved in the Excel file named "final_eigenvectors.xlsx": the eigenvector e0 is the one corresponding to the ground state of the Hamiltonian.')
 
 plt.grid()
 plt.plot(s, e0, c = 'black')
