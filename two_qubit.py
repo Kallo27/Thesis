@@ -19,8 +19,8 @@ s3_s3 = np.kron(s3, s3)
 
 # objective function parameters
 
-biases = np.array([0.1, 0.3])
-coupling_strengths = -0.2
+biases = np.array([0.1, 0.2])
+coupling_strengths = -0.4
 
 # QPU anneal parameters
 
@@ -96,4 +96,6 @@ plt.plot(s, e0, c = 'black')
 plt.plot(s, e1, c = 'yellow')
 plt.plot(s, e2, c = 'purple')
 plt.plot(s, e3, c = 'green')
+plt.xlabel("s = t/tA")
+plt.ylabel("Energy (GHz)")
 plt.show()
