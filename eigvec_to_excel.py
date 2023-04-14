@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+import math
 
 # Pauli matrices and identity
 
@@ -17,9 +17,9 @@ s3_I = np.kron(s3, I)
 I_s3 = np.kron(I, s3)
 s3_s3 = np.kron(s3, s3)
 
-def truncate(n, decimals=0):
+def round_half_up(n, decimals=0):
     multiplier = 10 ** decimals
-    return int(n * multiplier) / multiplier
+    return math.floor(n*multiplier + 0.5) / multiplier
 
 # objective function parameters
 
@@ -49,11 +49,9 @@ def H(t, h, J):
 # eigenvalues and eigenvectors
 
 E = np.empty([4, 4])
-h_values = np.empty([4, 4])
-J_values = np.empty([4, 4])
 
-for h in range (-10, 10):
-    for J in range (-10, 10): 
+for h in range (-10, 11):
+    for J in range (-10, 11): 
         for i in range (0, len(s)):
             EigValues, EigVectors = np.linalg.eig(H(i, h/10, J/10))
             permute = EigValues.argsort()
@@ -63,8 +61,8 @@ for h in range (-10, 10):
             EigVectors = np.real(EigVectors)
                 
             for pluto in range (0,4):
-                truncate(EigVectors.item(pluto), 2)
-
+                round_half_up(EigVectors.item(pluto), 2)
+                
         E = np.append(E, EigVectors, axis = 0)
 
 for i in range (0, 4): 
