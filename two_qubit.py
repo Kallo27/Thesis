@@ -19,8 +19,8 @@ s3_s3 = np.kron(s3, s3)
 
 # objective function parameters
 
-biases = np.array([0.1, 0.2])
-coupling_strengths = -0.4
+biases = np.array([-1, -1])
+coupling_strengths = 1
 
 # QPU anneal parameters
 
@@ -90,6 +90,8 @@ for i in range (0, len(e0)):
 # drawing
 
 print('The final eigenvectors are saved in the Excel file named "final_eigenvectors.xlsx": the eigenvector e0 is the one corresponding to the ground state of the Hamiltonian.')
+
+print(EigValues)
 
 plt.grid()
 plt.plot(s, e0, c = 'black')
