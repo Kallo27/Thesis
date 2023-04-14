@@ -91,6 +91,7 @@ for i in range (0, len(e0)):
 
 print('The final eigenvectors are saved in the Excel file named "final_eigenvectors.xlsx": the eigenvector e0 is the one corresponding to the ground state of the Hamiltonian.')
 
+print("The final eigenvalues are:")
 print(EigValues)
 
 plt.grid()
