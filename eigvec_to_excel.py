@@ -49,6 +49,10 @@ def H(t, h, J):
 # eigenvalues and eigenvectors
 
 E = np.empty([4, 4])
+h_values = np.empty([4, 1])
+j_values = np.empty([4, 1])
+pippo = []
+pluto = []
 
 for h in range (-10, 11):
     for J in range (-10, 11): 
@@ -64,10 +68,20 @@ for h in range (-10, 11):
                 round_half_up(EigVectors.item(pluto), 2)
                 
         E = np.append(E, EigVectors, axis = 0)
+        pippo = np.matrix([[h/10], ['-'], ['-'], ['-']])
+        pluto = np.matrix([[J/10], ['-'], ['-'], ['-']])
+        
+        h_values = np.append(h_values, pippo, axis=0)
+        j_values = np.append(j_values, pluto, axis=0)
 
 for i in range (0, 4): 
     E = np.delete(E, 0, 0)
+    h_values = np.delete(h_values, 0, 0)
+    j_values = np.delete(j_values, 0, 0)
 
 data = pd.DataFrame(E, columns=['e0', 'e1', 'e2', 'e3'])
+
+data['h'] = h_values
+data['J'] = j_values
 
 data.to_excel('eigenvectors.xlsx', index=False)
