@@ -1,10 +1,10 @@
 import numpy as np
 import pandas as pd
 
-E = ([[0, -0.5, -0.5, 0],
-    	[-0.5, 1, 0, -0.5],
-    	[-0.5, 0, 1, -0.5],
-    	[0, -0.5, -0.5, 0]])
+E = ([[1, -5, 8, 7],
+    	[1, -2, 1, 6],
+    	[2, -1, -5, 3],
+    	[2, 7, -3, 5]])
 
 EigValues, EigVectors = np.linalg.eig(E)
 permute = EigValues.argsort()
