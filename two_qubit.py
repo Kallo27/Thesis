@@ -19,7 +19,7 @@ s3_s3 = np.kron(s3, s3)
 
 # objective function parameters
 
-biases = np.array([-1, -1])
+biases = np.array([-1, 1])
 coupling_strengths = 1
 
 # QPU anneal parameters
