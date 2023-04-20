@@ -39,7 +39,7 @@ def H(t):
     
 # eigenvalues and eigenvectors
 
-e = np.empty([4, 1])
+e = []
 E = np.empty([4, 4])
 
 for i in range (0, len(s)):
@@ -51,34 +51,21 @@ for i in range (0, len(s)):
     E = np.append(E, EigVectors, axis = 0)
     
 df = pd.DataFrame(EigVectors, columns=['e0', 'e1', 'e2', 'e3'])
-df.to_excel('final_eigenvectors.xlsx', index=False)
+df.to_excel('final_eigenvec_two.xlsx', index=False)
 
-for i in range (0, 4): 
-    e = np.delete(e, 0)
+for i in range (0, 4):
     E = np.delete(E, 0, 0)
 
-e0 = np.empty([4, 1])
-e1 = np.empty([4, 1])
-e2 = np.empty([4, 1])
-e3 = np.empty([4, 1])
+e0 = []
+e1 = []
+e2 = []
+e3 = []
 
-for i in range(0, len(e), 4):
+for i in range(0, len(e) - 3, 4):
     e0 = np.append(e0, e.item(i))
-
-for i in range(1, len(e), 4):
-    e1 = np.append(e1, e.item(i))
-
-for i in range(2, len(e), 4):
-    e2 = np.append(e2, e.item(i))
-    
-for i in range(3, len(e), 4):
-    e3 = np.append(e3, e.item(i))
-   
-for i in range (0, 4): 
-    e0 = np.delete(e0, 0)
-    e1 = np.delete(e1, 0)
-    e2 = np.delete(e2, 0)
-    e3 = np.delete(e3, 0)
+    e1 = np.append(e1, e.item(i + 1))
+    e2 = np.append(e2, e.item(i + 2))
+    e3 = np.append(e3, e.item(i + 3))
     
 for i in range (0, len(e0)):
     e1[i] = e1[i] - e0[i]
