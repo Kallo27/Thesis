@@ -121,12 +121,19 @@ for i in range (0, len(e0)):
     e15[i] = e15[i] - e0[i]
     e0[i] = e0[i] - e0[i]
 
-# drawing
-
 print('The final eigenvectors are saved in the Excel file named "final_eigenvectors.xlsx": the eigenvector e0 is the one corresponding to the ground state of the Hamiltonian.')
 
 print("The final eigenvalues are:")
 print(EigValues)
+
+# minimum gap
+
+minimum_gap = min(e1)
+t_min = s.item(e1.argmin())
+
+print('The band gap is', minimum_gap.real, 'GHz and occurs when s =', t_min)
+
+# drawing
 
 plt.grid()
 plt.plot(s, e0, c = 'black')
