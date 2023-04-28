@@ -47,7 +47,6 @@ def H(t):
 # eigenvalues and eigenvectors
 
 e = []
-E = np.empty([8, 8])
 
 for i in range (0, len(s)):
     EigValues, EigVectors = np.linalg.eig(H(i))
@@ -55,13 +54,9 @@ for i in range (0, len(s)):
     EigValues = EigValues[permute]
     EigVectors = EigVectors[:,permute]
     e = np.append(e, EigValues)
-    E = np.append(E, EigVectors, axis = 0)
     
 df = pd.DataFrame(EigVectors, columns=['e0', 'e1', 'e2', 'e3', 'e4', 'e5', 'e6', 'e7'])
 df.to_excel('final_eigenvec_three.xlsx', index=False)
-
-for i in range (0, 8): 
-    E = np.delete(E, 0, 0)
 
 e0 = []
 e1 = []
@@ -92,7 +87,7 @@ for i in range (0, len(e0)):
     e7[i] = e7[i] - e0[i]
     e0[i] = e0[i] - e0[i]
 
-print('The final eigenvectors are saved in the Excel file named "final_eigenvectors.xlsx": the eigenvector e0 is the one corresponding to the ground state of the Hamiltonian.')
+print('The final eigenvectors are saved in the Excel file named "final_eigenvec_three.xlsx": the eigenvector e0 is the one corresponding to the ground state of the Hamiltonian.')
 
 print("The final eigenvalues are:")
 print(EigValues)
