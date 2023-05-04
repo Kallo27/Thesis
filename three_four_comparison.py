@@ -40,15 +40,15 @@ s3_I_I_s3 = np.kron(np.kron(np.kron(s3, I), I), s3)
 
 # objective function parameters
 
-biases3 = np.array([0.5, 1, 0.8])
-coupling_strengths3 = np.matrix([[0, 2, 0.5], 
-                                [0, 0, -1], 
+biases3 = np.array([0.5, 0, 1])
+coupling_strengths3 = np.matrix([[0, 1.5, 1.5], 
+                                [0, 0, 1.5], 
                                 [0, 0, 0]])
 
-biases4 = np.array([0.5, 0.5, 1, 0.8])
-coupling_strengths4 = np.matrix([[0, 0.5, 0, 0.5], 
-                                [0, 0, 2, 0],
-                                [0, 0, 0, -1], 
+biases4 = np.array([0.5, 0, 1, 0.5])
+coupling_strengths4 = np.matrix([[0, 1.5, 0, -5], 
+                                [0, 0, 1.5, 0],
+                                [0, 0, 0, 1.5], 
                                 [0, 0, 0, 0]])
 # QPU anneal parameters
 
