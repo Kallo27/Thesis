@@ -92,4 +92,5 @@ ax.set_xlabel('h1')
 ax.set_ylabel('h2')
 
 plt.savefig('eigvec_plot_h1h2.pdf')
+plt.savefig('eigvec_plot_h1h2.jpg')
 plt.show()

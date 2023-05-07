@@ -142,4 +142,5 @@ ax.set_xlabel('J')
 ax.set_ylabel('h')
 
 plt.savefig('four_plot_hJ.pdf')
+plt.savefig('four_plot_hJ.jpg')
 plt.show()
