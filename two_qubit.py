@@ -19,8 +19,8 @@ s3_s3 = np.kron(s3, s3)
 
 # objective function parameters
 
-biases = np.array([-1, 1])
-coupling_strengths = 1
+biases = np.array([-1, 1.5])
+coupling_strengths = 2
 
 # QPU anneal parameters
 
@@ -28,6 +28,10 @@ data = pd.read_excel(r'.\DWAVE_2000Q_annealing_schedule.xlsx')
 A = np.array(data['A(s) (GHz)'])
 B = np.array(data['B(s) (GHz)'])
 s = np.array(data['s'])
+
+h = 6.62607015e-25
+A = A * h
+B = B * h
 
 # hamiltonians
 
@@ -93,5 +97,5 @@ plt.plot(s, e1, c = 'yellow')
 plt.plot(s, e2, c = 'purple')
 plt.plot(s, e3, c = 'green')
 plt.xlabel("s = t/tA")
-plt.ylabel("Energy (GHz)")
+plt.ylabel("Energy (J)")
 plt.show()
