@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_excel(r'.\DWAVE_2000Q_annealing_schedule.xlsx')
+data = pd.read_excel(r'.\Advantage_system6_2_annealing_schedule.xlsx')
 A = np.array(data['A(s) (GHz)'])
 B = np.array(data['B(s) (GHz)'])
 s = np.array(data['s'])

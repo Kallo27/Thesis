@@ -19,12 +19,12 @@ s3_s3 = np.kron(s3, s3)
 
 # objective function parameters
 
-biases = np.array([-1, 1.5])
-coupling_strengths = 2
+biases = np.array([0.1, 0.2])
+coupling_strengths = -0.4
 
 # QPU anneal parameters
 
-data = pd.read_excel(r'.\DWAVE_2000Q_annealing_schedule.xlsx')
+data = pd.read_excel(r'.\Advantage_system6_2_annealing_schedule.xlsx')
 A = np.array(data['A(s) (GHz)'])
 B = np.array(data['B(s) (GHz)'])
 s = np.array(data['s'])
