@@ -1,0 +1,20 @@
+COMPLETE GRAPH: 5 QUBITS (KP 4 OBJ.)
+
+   s_1 s_2 s_3 s_4 s_5 energy num_oc. chain_.
+0   +1  -1  -1  +1  -1   -4.0     664     0.0
+1   +1  -1  +1  +1  -1   -4.0     821     0.0 <--- questo è il gs perchè è il più frequente
+2   +1  -1  -1  +1  +1   -4.0     387     0.0
+3   +1  -1  -1  -1  +1   -3.0      17     0.0
+4   +1  -1  +1  -1  -1   -3.0      27     0.0
+5   -1  -1  +1  +1  +1   -3.0      20     0.0
+6   +1  -1  +1  -1  +1   -3.0      18     0.0
+7   -1  -1  +1  +1  -1   -3.0      24     0.0
+8   -1  -1  -1  +1  +1   -3.0      19     0.0
+9   -1  -1  +1  -1  +1   -2.0       1     0.0
+10  +1  +1  -1  +1  +1    2.0       1     0.2
+11  +1  +1  +1  +1  -1    2.0       1     0.2
+['SPIN', 12 rows, 2000 samples, 5 variables]
+{'timing': {'qpu_sampling_time': 161800.0, 'qpu_anneal_time_per_sample': 20.0, 'qpu_readout_time_per_sample': 40.36, 'qpu_access_time': 177725.57, 'qpu_access_overhead_time': 683.43, 'qpu_programming_time': 15925.57, 'qpu_delay_time_per_sample': 20.54, 'post_processing_overhead_time': 1778.0, 'total_post_processing_time': 1778.0}, 'problem_id': '493efc54-6de9-4d90-baa4-633e2d061179', 'problem_label': 'knapsack problem - 2 objects', 'embedding_context': {'embedding': {'s_2': (1474, 3637), 's_1': (3713,), 's_3': (1503,), 's_4': (3698,), 's_5': (1518,)}, 'chain_break_method': 'majority_vote', 'embedding_parameters': {}, 'chain_strength': 1.414}, 'warnings': []}
+
+h = {-1/2, 2, 0, -1/2, 0}
+J = {{0, 1/2, 1/2, 1/2, 1/2}, {0, 0, 1/2, 1/2, 1/2}, {0, 0, 0, 1/2, 1/2}, {0, 0, 0, 0, 1/2}, {0, 0, 0, 0, 0}}
