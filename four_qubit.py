@@ -28,18 +28,23 @@ s3_I_I_s3 = np.kron(np.kron(np.kron(s3, I), I), s3)
 
 # objective function parameters
 
-biases = np.array([-0.7, -0.7, -0.7, -0.7])
-coupling_strengths = np.matrix([[0, -1, 0, -1], 
-                                [0, 0, -1, 0],
-                                [0, 0, 0, -1], 
+biases = np.array([9/2, 4 , 7/2, 5])
+coupling_strengths = np.matrix([[0, 5/2, 5/2, 5/2], 
+                                [0, 0, 5/2, 5/2],
+                                [0, 0, 0, 5/2], 
                                 [0, 0, 0, 0]])
 
 # QPU anneal parameters
 
-data = pd.read_excel(r'.\DWAVE_2000Q_annealing_schedule.xlsx')
+data = pd.read_excel(r'.\Advantage_system6_2_annealing_schedule.xlsx')
 A = np.array(data['A(s) (GHz)'])
 B = np.array(data['B(s) (GHz)'])
 s = np.array(data['s'])
+
+h = 6.62607015e-25
+
+A = A * h
+B = B * h
 
 # hamiltonians
 
@@ -126,7 +131,7 @@ print(EigValues)
 minimum_gap = min(e1)
 t_min = s.item(e1.argmin())
 
-print('The band gap is', minimum_gap.real, 'GHz and occurs when s =', t_min)
+print('The band gap is', minimum_gap.real, 'Joule and occurs when s =', t_min)
 
 # drawing
 
