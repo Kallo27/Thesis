@@ -24,25 +24,24 @@ J = {{0, 5/2, 5/2, 5/2, 5/2}, {0, 0, 5/2, 5/2, 5/2}, {0, 0, 0, 5/2, 5/2}, {0, 0,
 
 Risultati Advantage6.2:
    s_1 s_2 s_3 s_4 s_5 energy num_oc. chain_.
-0   -1  -1  -1  +1  -1  -16.5     696     0.0 --> questo è il gs, come ci aspettavamo
-1   -1  -1  +1  -1  -1  -15.5     339     0.0
-2   -1  -1  +1  +1  -1  -14.5     171     0.0
-3   -1  +1  -1  -1  -1  -14.5     267     0.0
-4   +1  -1  -1  -1  -1  -13.5     108     0.0
-5   -1  +1  -1  +1  -1  -13.5     142     0.0
-6   -1  +1  +1  -1  -1  -12.5      68     0.0
-7   +1  -1  -1  +1  -1  -12.5      61     0.0
-8   -1  -1  -1  -1  +1  -12.5      57     0.0
-9   +1  -1  +1  -1  -1  -11.5      20     0.0
-10  -1  -1  -1  +1  +1  -11.5      34     0.0
-11  +1  +1  -1  -1  -1  -10.5      14     0.0
-12  -1  -1  +1  -1  +1  -10.5      10     0.0
-13  -1  +1  -1  -1  +1   -9.5       6     0.0
-14  +1  -1  -1  -1  +1   -8.5       6     0.0
-15  -1  -1  -1  -1  -1   -7.5       1     0.0
+0   -1  -1  -1  +1  -1  -16.5     967     0.0
+1   -1  -1  +1  -1  -1  -15.5     340     0.0
+2   -1  +1  -1  -1  -1  -14.5     221     0.0
+3   -1  -1  +1  +1  -1  -14.5     156     0.0
+4   +1  -1  -1  -1  -1  -13.5      97     0.0
+5   -1  +1  -1  +1  -1  -13.5      69     0.0
+6   -1  +1  +1  -1  -1  -12.5      32     0.0
+7   -1  -1  -1  -1  +1  -12.5      32     0.0
+8   +1  -1  -1  +1  -1  -12.5      42     0.0
+9   -1  -1  -1  +1  +1  -11.5       9     0.0
+10  +1  -1  +1  -1  -1  -11.5      13     0.0
+11  +1  +1  -1  -1  -1  -10.5      11     0.0
+12  -1  -1  +1  -1  +1  -10.5       4     0.0
+13  -1  +1  -1  -1  +1   -9.5       3     0.0
+14  +1  -1  -1  -1  +1   -8.5       2     0.0
+15  -1  -1  -1  -1  -1   -7.5       2     0.0
 ['SPIN', 16 rows, 2000 samples, 5 variables]
-{'timing': {'qpu_sampling_time': 180040.0, 'qpu_anneal_time_per_sample': 20.0, 'qpu_readout_time_per_sample': 49.48, 'qpu_access_time': 195966.37, 'qpu_access_overhead_time': 370.63, 'qpu_programming_time': 15926.37, 'qpu_delay_time_per_sample': 20.54, 'post_processing_overhead_time': 3469.0, 'total_post_processing_time': 3469.0}, 'problem_id': '5befeea1-d8e8-47ff-85aa-98df2e5f8d75', 'problem_label': 'knapsack problem - 4 objects', 'embedding_context': {'embedding': {'s_2': (1782, 5244), 's_1': (5304,), 's_3': (5289,), 's_4': (1737,), 's_5': (1722,)}, 'chain_break_method': 'majority_vote', 'embedding_parameters': {}, 'chain_strength': 7.069999999999999}, 'warnings': []}
-
+{'timing': {'qpu_sampling_time': 181200.0, 'qpu_anneal_time_per_sample': 20.0, 'qpu_readout_time_per_sample': 50.06, 'qpu_access_time': 196955.57, 'qpu_access_overhead_time': 609.43, 'qpu_programming_time': 15755.57, 'qpu_delay_time_per_sample': 20.54, 'post_processing_overhead_time': 2108.0, 'total_post_processing_time': 2108.0}, 'problem_id': 'ce9b0f8c-ef19-4a64-a487-8c187c073baf', 'problem_label': 'knapsack problem - 4 objects', 'embedding_context': {'embedding': {'s_2': (2810,), 's_1': (2795,), 's_3': (2780, 4109), 's_4': (3959,), 's_5': (3944,)}, 'chain_break_method': 'majority_vote', 'embedding_parameters': {}, 'chain_strength': 7.069999999999999}, 'warnings': []}
 -----------------------------------------------------------------------------------------------------------------------------------------
 
 COMPLETE GRAPH: 21 QUBITS (KP 20 OBJ.)
