@@ -31,7 +31,7 @@ biases = np.array([-1, 1])
 
 # QPU anneal parameters
 
-data = pd.read_excel(r'.\DWAVE_2000Q_annealing_schedule.xlsx')
+data = pd.read_excel(r'.\Advantage_system6_2_annealing_schedule.xlsx')
 A = np.array(data['A(s) (GHz)'])
 B = np.array(data['B(s) (GHz)'])
 s = np.array(data['s'])
@@ -91,6 +91,6 @@ ax.set_title('Condition: J fixed')
 ax.set_xlabel('h1')
 ax.set_ylabel('h2')
 
-plt.savefig('eigvec_plot_h1h2.pdf')
-plt.savefig('eigvec_plot_h1h2.jpg')
+plt.savefig('two_plot_h1h2.pdf')
+plt.savefig('two_plot_h1h2.jpg')
 plt.show()
