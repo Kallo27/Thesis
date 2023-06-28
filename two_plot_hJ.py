@@ -91,6 +91,6 @@ ax.set_title('Condition: h1 = h2 = h')
 ax.set_xlabel('J')
 ax.set_ylabel('h')
 
-plt.savefig('eigvec_plot_hJ.pdf')
-plt.savefig('eigvec_plot_hJ.jpg')
+plt.savefig('two_plot_hJ.pdf')
+plt.savefig('two_plot_hJ.jpg')
 plt.show()
