@@ -25,7 +25,7 @@ def round_half_up(n, decimals=0):
 
 coupling_strength = float(input('Please enter the value of the parameter J:\n'))
 
-biases = np.array([-1, 1])
+biases = np.array([1, 1])
 
 # QPU anneal parameters
 

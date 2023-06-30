@@ -25,16 +25,21 @@ I_s3_s3 = np.kron(np.kron(I, s3), s3)
 
 # objective function parameters
 
-biases = np.array([-0.7, -0.7, -0.7])
-coupling_strengths = np.matrix([[-1, -1], 
-                                [0, -1]])
+biases = np.array([1, 1/2, 3/2])
+coupling_strengths = np.matrix([[0, 3/2, 3/2], 
+                                [0, 0, 3/2],
+                                [0, 0, 0]])
 
 # QPU anneal parameters
 
-data = pd.read_excel(r'.\DWAVE_2000Q_annealing_schedule.xlsx')
+data = pd.read_excel(r'.\Advantage_system6_2_annealing_schedule.xlsx')
 A = np.array(data['A(s) (GHz)'])
 B = np.array(data['B(s) (GHz)'])
 s = np.array(data['s'])
+
+h = 6.62607015e-25
+A = A * h
+B = B * h
 
 # hamiltonians
 
@@ -97,20 +102,20 @@ print(EigValues)
 minimum_gap = min(e1)
 t_min = s.item(e1.argmin())
 
-print('The band gap is', minimum_gap.real, 'GHz and occurs when s =', t_min)
+print('The band gap is', minimum_gap.real, 'Joule and occurs when s =', t_min)
 
 # drawing
 
 plt.grid()
-plt.plot(s, e0, c = 'black')
-plt.plot(s, e1, c = 'yellow')
-plt.plot(s, e2, c = 'purple')
+plt.plot(s, e2, c = 'yellow')
 plt.plot(s, e3, c = 'green')
 plt.plot(s, e4, c = 'blue')
-plt.plot(s, e5, c = 'red')
-plt.plot(s, e6, c = 'brown')
+plt.plot(s, e5, c = 'brown')
+plt.plot(s, e6, c = 'purple')
 plt.plot(s, e7, c = 'grey')
+plt.plot(s, e0, c = 'black')
+plt.plot(s, e1, c = 'red')
 
 plt.xlabel("s = t/tA")
-plt.ylabel("Energy (GHz)")
+plt.ylabel("Energy (J)")
 plt.show()

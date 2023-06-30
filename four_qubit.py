@@ -28,10 +28,10 @@ s3_I_I_s3 = np.kron(np.kron(np.kron(s3, I), I), s3)
 
 # objective function parameters
 
-biases = np.array([9/2, 4 , 7/2, 5])
-coupling_strengths = np.matrix([[0, 5/2, 5/2, 5/2], 
-                                [0, 0, 5/2, 5/2],
-                                [0, 0, 0, 5/2], 
+biases = np.array([7/2, 3 , 5/2, 4])
+coupling_strengths = np.matrix([[0, 2, 2, 2], 
+                                [0, 0, 2, 2],
+                                [0, 0, 0, 2], 
                                 [0, 0, 0, 0]])
 
 # QPU anneal parameters
@@ -136,23 +136,23 @@ print('The band gap is', minimum_gap.real, 'Joule and occurs when s =', t_min)
 # drawing
 
 plt.grid()
-plt.plot(s, e0, c = 'black')
-plt.plot(s, e1, c = 'yellow')
-plt.plot(s, e2, c = 'purple')
+plt.plot(s, e2, c = 'yellow')
 plt.plot(s, e3, c = 'green')
 plt.plot(s, e4, c = 'blue')
-plt.plot(s, e5, c = 'red')
-plt.plot(s, e6, c = 'brown')
+plt.plot(s, e5, c = 'brown')
+plt.plot(s, e6, c = 'purple')
 plt.plot(s, e7, c = 'grey')
-plt.plot(s, e8, c = 'black')
+plt.plot(s, e8, c = 'green')
 plt.plot(s, e9, c = 'yellow')
 plt.plot(s, e10, c = 'purple')
 plt.plot(s, e11, c = 'green')
 plt.plot(s, e12, c = 'blue')
-plt.plot(s, e13, c = 'red')
+plt.plot(s, e13, c = 'cyan')
 plt.plot(s, e14, c = 'brown')
 plt.plot(s, e15, c = 'grey')
+plt.plot(s, e0, c = 'black')
+plt.plot(s, e1, c = 'red')
 
 plt.xlabel("s = t/tA")
-plt.ylabel("Energy (GHz)")
+plt.ylabel("Energy (J)")
 plt.show()

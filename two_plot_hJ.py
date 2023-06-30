@@ -17,7 +17,7 @@ I_s1 = np.kron(I, s1)
 s3_I = np.kron(s3, I)
 I_s3 = np.kron(I, s3)
 s3_s3 = np.kron(s3, s3)
-zeta = np.matrix([[1, 0, 0, 0], [0, 2, 0, 0], [0, 0, 3, 0], [0, 0, 0, 4]])
+zeta = np.matrix([[1, 0, 0, 0], [0, 10, 0, 0], [0, 0, 100, 0], [0, 0, 0, 1000]])
 
 def round_half_up(n, decimals=0):
     multiplier = 10 ** decimals
@@ -56,29 +56,35 @@ def ground_state(h, J):
         permute = EigValues.argsort()
         EigValues = EigValues[permute]
         EigVectors = EigVectors[:,permute]
-        
+    
     EigVectors = np.real(EigVectors)
-    pippo = round_half_up(np.linalg.norm(zeta * EigVectors[:,0]), 1)
+    for i in range(0, 4):
+        EigVectors[:,0][i] = round_half_up(EigVectors[:,0][i], 1)
+        
+    pippo = round_half_up(np.linalg.norm(zeta * EigVectors[:,0]))
+    print(h, J, EigVectors[:,0], pippo)
+
+    
     if pippo == 1.0:
         return 1
-    elif pippo == 2.0:
+    elif pippo == 10.0:
         return 2
-    elif pippo == 3.0:
+    elif pippo == 100.0:
         return 3
-    elif pippo == 4.0:
+    elif pippo == 1000.0:
         return 4
     else:
         return 0
 
 z = []
 
-for h in np.arange(-2, 2, 0.1):
+for h in np.arange(-2, 2.1, 0.1):
     z.append([])
-    for J in np.arange(-2, 2, 0.1):
+    for J in np.arange(-1, 1.1, 0.1):
          z[-1].append(ground_state(h,J))
 
-xlist = np.linspace(-2, 1.9, 40)
-ylist = np.linspace(-2, 1.9, 40)
+xlist = np.linspace(-1, 1, 21)
+ylist = np.linspace(-2, 2, 41)
 X, Y = np.meshgrid(xlist, ylist)
  
 fig, ax = plt.subplots(1,1)
