@@ -166,9 +166,10 @@ print('The band gap for the 6 qubits (red line) is', minimum_gap6.real, 'Joule a
 plt.grid()
 plt.plot(s, e05, c = 'black')
 plt.plot(s, e06, c = 'black')
-plt.plot(s, e15, c = 'blue')
-plt.plot(s, e16, c = 'red')
+five_qubits, = plt.plot(s, e15, c = 'blue', label='5 qubits')
+six_qubits, = plt.plot(s, e16, c = 'red', label='6 qubits')
 
 plt.xlabel("s = t/tA")
-plt.ylabel("Energy (GHz)")
+plt.ylabel("Energy (J)")
+plt.legend(handles=[five_qubits, six_qubits])
 plt.show()
