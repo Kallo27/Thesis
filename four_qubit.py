@@ -22,16 +22,18 @@ I_I_s3_I = np.kron(np.kron(np.kron(I, I), s3), I)
 I_I_I_s3 = np.kron(np.kron(np.kron(I, I), I), s3)
 
 s3_s3_I_I = np.kron(np.kron(np.kron(s3, s3), I), I)
-I_s3_s3_I = np.kron(np.kron(np.kron(I, s3), s3), I)
-I_I_s3_s3 = np.kron(np.kron(np.kron(I, I), s3), s3)
+s3_I_s3_I = np.kron(np.kron(np.kron(s3, I), s3), I)
 s3_I_I_s3 = np.kron(np.kron(np.kron(s3, I), I), s3)
+I_s3_s3_I = np.kron(np.kron(np.kron(I, s3), s3), I)
+I_s3_I_s3 = np.kron(np.kron(np.kron(I, s3), I), s3)
+I_I_s3_s3 = np.kron(np.kron(np.kron(I, I), s3), s3)
 
 # objective function parameters
 
-biases = np.array([7/2, 3 , 5/2, 4])
-coupling_strengths = np.matrix([[0, 2, 2, 2], 
-                                [0, 0, 2, 2],
-                                [0, 0, 0, 2], 
+biases = np.array([1, 2, 3, 4])
+coupling_strengths = np.matrix([[0, -7, -7, -7], 
+                                [0, 0, -7, -7],
+                                [0, 0, 0, -7], 
                                 [0, 0, 0, 0]])
 
 # QPU anneal parameters
@@ -49,7 +51,7 @@ B = B * h
 # hamiltonians
 
 h0 = (s1_I_I_I + I_s1_I_I + I_I_s1_I + I_I_I_s1)
-hf = (biases.item(0) * s3_I_I_I + biases.item(1) * I_s3_I_I + biases.item(2) * I_I_s3_I + biases.item(3) * I_I_I_s3) + (coupling_strengths.item(0, 1) * s3_s3_I_I+ coupling_strengths.item(1, 2) * I_s3_s3_I + coupling_strengths.item(2, 3) * I_I_s3_s3 + coupling_strengths.item(0, 3) * s3_I_I_s3)
+hf = (biases.item(0) * s3_I_I_I + biases.item(1) * I_s3_I_I + biases.item(2) * I_I_s3_I + biases.item(3) * I_I_I_s3) + (coupling_strengths.item(0, 1) * s3_s3_I_I + coupling_strengths.item(0, 2) * s3_I_s3_I + coupling_strengths.item(0, 3) * s3_I_I_s3 + coupling_strengths.item(1, 2) * I_s3_s3_I + coupling_strengths.item(1, 3) * I_s3_I_s3 + coupling_strengths.item(2, 3) * I_I_s3_s3)
 
 def H(t): 
     return - A.item(t) / 2 * h0 + B.item(t) / 2 * hf
