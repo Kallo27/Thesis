@@ -43,7 +43,7 @@ s = np.array(data['s'])
 h0 = (s1_I + I_s1)
 
 def hf(h, J):
-    return (biases(h) * (s3_I + I_s3)) + (coupling_strengths(J) * s3_s3)
+    return (biases(h) * (s3_I + 2*I_s3)) + (coupling_strengths(J) * s3_s3)
 
 def H(t, h, J):
     return - A.item(t) / 2 * h0 + B.item(t) / 2 * hf(h, J)
@@ -78,13 +78,13 @@ def ground_state(h, J):
 
 z = []
 
-for h in np.arange(-2, 2.1, 0.1):
+for h in np.arange(-10, 10.5, 0.5):
     z.append([])
-    for J in np.arange(-1, 1.1, 0.1):
+    for J in np.arange(-10, 10.5, 0.5):
          z[-1].append(ground_state(h,J))
 
-xlist = np.linspace(-1, 1, 21)
-ylist = np.linspace(-2, 2, 41)
+xlist = np.linspace(-10, 10, 41)
+ylist = np.linspace(-10, 10, 41)
 X, Y = np.meshgrid(xlist, ylist)
  
 fig, ax = plt.subplots(1,1)
@@ -95,7 +95,7 @@ fig.colorbar(cp) # Add a colorbar to a plot
 ax.set_title('Condition: h1 = h2 = h')
 
 ax.set_xlabel('J')
-ax.set_ylabel('h')
+ax.set_ylabel('h1')
 
 plt.savefig('two_plot_hJ.pdf')
 plt.savefig('two_plot_hJ.jpg')

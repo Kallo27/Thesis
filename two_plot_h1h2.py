@@ -60,7 +60,7 @@ def ground_state(h1, h2):
     for i in range(0, 4):
         EigVectors[:,0][i] = round_half_up(EigVectors[:,0][i], 1)
         
-    pippo = round_half_up(np.linalg.norm(zeta * EigVectors[:,0]))
+    pippo = round_half_up(np.linalg.norm(zeta * EigVectors[:,0]), 1)
     
     print(h1, h2, EigVectors[:,0], pippo)
     if pippo == 1.0:
@@ -76,13 +76,13 @@ def ground_state(h1, h2):
 
 z = []
 
-for h1 in np.arange(-2, 2.1, 0.1):
+for h1 in np.arange(-10, 10.5, 0.5):
     z.append([])
-    for h2 in np.arange(-2, 2.1, 0.1):
+    for h2 in np.arange(-10, 10.5, 0.5):
          z[-1].append(ground_state(h1,h2))
 
-xlist = np.linspace(-2, 2, 41)
-ylist = np.linspace(-2, 2, 41)
+xlist = np.linspace(-10, 10, 41)
+ylist = np.linspace(-10, 10, 41)
 X, Y = np.meshgrid(xlist, ylist)
 
 fig, ax = plt.subplots(1,1)
