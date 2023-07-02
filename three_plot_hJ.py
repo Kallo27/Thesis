@@ -25,13 +25,13 @@ s3_I_s3 = np.kron(np.kron(s3, I), s3)
 I_s3_s3 = np.kron(np.kron(I, s3), s3)
 
 zeta = np.matrix([[1, 0, 0, 0, 0, 0, 0, 0], 
-                  [0, 2, 0, 0, 0, 0, 0, 0],
-                  [0, 0, 3, 0, 0, 0, 0, 0],
-                  [0, 0, 0, 4, 0, 0, 0, 0],
-                  [0, 0, 0, 0, 5, 0, 0, 0], 
-                  [0, 0, 0, 0, 0, 6, 0, 0],
-                  [0, 0, 0, 0, 0, 0, 7, 0],
-                  [0, 0, 0, 0, 0, 0, 0, 8]])
+                  [0, 10, 0, 0, 0, 0, 0, 0],
+                  [0, 0, 100, 0, 0, 0, 0, 0],
+                  [0, 0, 0, 1000, 0, 0, 0, 0],
+                  [0, 0, 0, 0, 10000, 0, 0, 0], 
+                  [0, 0, 0, 0, 0, 100000, 0, 0],
+                  [0, 0, 0, 0, 0, 0, 1000000, 0],
+                  [0, 0, 0, 0, 0, 0, 0, 10000000]])
 
 def round_half_up(n, decimals=0):
     multiplier = 10 ** decimals
@@ -57,7 +57,7 @@ s = np.array(data['s'])
 h0 = (s1_I_I + I_s1_I + I_I_s1)
 
 def hf(h, J):
-    return (biases(h) * s3_I_I + biases(h) * I_s3_I + biases(h) * I_I_s3) + (coupling_strengths(J) * s3_s3_I + coupling_strengths(J) * s3_I_s3 + coupling_strengths(J) * I_s3_s3)
+    return (biases(h) * s3_I_I + 2 * biases(h) * I_s3_I + 3 * biases(h) * I_I_s3) + (coupling_strengths(J) * s3_s3_I + coupling_strengths(J) * s3_I_s3 + coupling_strengths(J) * I_s3_s3)
 
 def H(t, h, J):
     return - A.item(t) / 2 * h0 + B.item(t) / 2 * hf(h, J)
@@ -72,36 +72,39 @@ def ground_state(h, J):
         EigVectors = EigVectors[:,permute]
         
     EigVectors = np.real(EigVectors)
-    pippo = round_half_up(np.linalg.norm(zeta * EigVectors[:,0]), 1)
+    for i in range(0, 8):
+        EigVectors[:,0][i] = round_half_up(EigVectors[:,0][i], 1)
+    
+    pippo = round_half_up(np.linalg.norm(zeta * EigVectors[:,0]))
     
     if pippo == 1.0:
         return 1
-    elif pippo == 2.0:
+    elif pippo == 10.0:
         return 2
-    elif pippo == 3.0:
+    elif pippo == 100.0:
         return 3
-    elif pippo == 4.0:
+    elif pippo == 1000.0:
         return 4
-    elif pippo == 5.0:
+    elif pippo == 10000.0:
         return 5
-    elif pippo == 6.0:
+    elif pippo == 100000.0:
         return 6
-    elif pippo == 7.0:
+    elif pippo == 1000000.0:
         return 7
-    elif pippo == 8.0:
+    elif pippo == 10000000.0:
         return 8
     else:
         return 10
 
 z = []
 
-for h in np.arange(-1, 1, 0.1):
+for h in np.arange(-10, 10.5, 0.5):
     z.append([])
-    for J in np.arange(-1, 1, 0.1):
+    for J in np.arange(-10, 10.5, 0.5):
          z[-1].append(ground_state(h,J))
 
-xlist = np.linspace(-1, 0.9, 20)
-ylist = np.linspace(-1, 0.9, 20)
+xlist = np.linspace(-10, 10, 41)
+ylist = np.linspace(-10, 10, 41)
 X, Y = np.meshgrid(xlist, ylist)
  
 fig, ax = plt.subplots(1,1)
