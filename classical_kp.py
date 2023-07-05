@@ -98,14 +98,14 @@ def knapSack(W, wt, val, n):
 
 # Driver Code
 if __name__ == '__main__':
-    val=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    wt=[1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
-    W = 30
+    val=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    wt=[1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+    W = 41
     n = len(val)
     maximum = knapSack(W, wt, val, n)
     print("Maximum Profit =",maximum)
 
 end_time = time.monotonic()
-print(timedelta(seconds=end_time - start_time))
+print('Compilation time:', end_time-start_time)
 
 #This code was contributed by Amartya Ghosh
