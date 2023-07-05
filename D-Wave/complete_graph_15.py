@@ -31,7 +31,7 @@ J = {('s1', 's2'): 8, ('s1', 's3'): 8, ('s1', 's4'): 8, ('s1', 's5'): 8, ('s1', 
 
 sampleset = sampler.sample_ising(h, J, num_reads=5000, label='complete graph - 15 qubits')
 
-data = pd.DataFrame(sampleset)
+data = sampleset.to_pandas_dataframe()
 data.to_excel('sampleset_15.xlsx', index=False)
 
 print(sampleset)
