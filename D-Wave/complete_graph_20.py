@@ -53,7 +53,10 @@ J = {('s_1', 's_2'): 10.5, ('s_1', 's_3'): 10.5, ('s_1', 's_4'): 10.5, ('s_1', '
     ('s_19', 's_20'): 10.5, ('s_19', 's_21'): 10.5, 
     ('s_20', 's_21'): 10.5}
 
-sampleset = sampler.sample_ising(h, J, num_reads=2000, label='knapsack problem - 20 objects')
+sampleset = sampler.sample_ising(h, J, num_reads=5000, label='knapsack problem - 20 objects')
+
+data = sampleset.to_pandas_dataframe()
+data.to_excel('sampleset_20.xlsx', index=False)
 
 print(sampleset)
 print(sampleset.info)
