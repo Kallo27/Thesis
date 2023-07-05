@@ -1,3 +1,4 @@
+import pandas as pd
 from dwave.system import DWaveSampler, AutoEmbeddingComposite
 import dwave.inspector
 sampler = AutoEmbeddingComposite(DWaveSampler(solver={'topology__type': 'pegasus'}))
@@ -16,6 +17,9 @@ J = {('s1', 's2'): 5, ('s1', 's3'): 5, ('s1', 's4'): 5, ('s1', 's5'): 5, ('s1', 
 
 
 sampleset = sampler.sample_ising(h, J, num_reads=5000, label='complete graph - 10 qubits')
+
+data = pd.DataFrame(sampleset)
+data.to_excel('sampleset_10.xlsx', index=False)
 
 print(sampleset)
 print(sampleset.info)
