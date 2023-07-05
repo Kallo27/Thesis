@@ -6,7 +6,7 @@ from scipy.optimize import curve_fit
 
 #data = pd.read_excel(r'.\hist_kp.xlsx')
 
-data = pd.read_excel(r'.\temperature_data.xlsx', sheet_name = "21 qubits")
+data = pd.read_excel(r'.\temperature_data.xlsx', sheet_name = "10 qubits")
 
 energy = np.array(data['energy'])
 deg = np.array(data['deg'])
@@ -29,10 +29,10 @@ def boltzmann_distribution(x,T):
     y = np.float64(-(x[0])/(k_B * T))
     return x[1]*(mt.e ** y) / Z(x, T)
 
-x_model = np.linspace(min(energy), max(energy), 302)
-y_data = num_occ/2000
+x_model = np.linspace(min(energy), max(energy), 77)
+y_data = num_occ/50000
 
-popt, pcov = curve_fit(boltzmann_distribution, [energy, deg], y_data, p0 = [10])
+popt, pcov = curve_fit(boltzmann_distribution, [energy, deg], y_data, p0 = [1])
 
 print(popt)
 print(pcov)
@@ -41,11 +41,11 @@ print(pcov)
 
 plt.figure(1, dpi=120)
 plt.plot(x_model, boltzmann_distribution([x_model, deg], popt), color = "red")
-plt.scatter(energy, num_occ/2000, label="Energy Distribution")
+plt.scatter(energy, y_data, label="Energy Distribution")
 plt.xlabel("Energy (J)")
 plt.ylabel("Occurrences")
 
-plt.savefig('fit21.pdf')
-plt.savefig('fit21.png')
+plt.savefig('fit10.pdf')
+plt.savefig('fit10.png')
 
 plt.show()
