@@ -6,7 +6,7 @@ from scipy.optimize import curve_fit
 
 #data = pd.read_excel(r'.\hist_kp.xlsx')
 
-data = pd.read_excel(r'.\temperature_data.xlsx', sheet_name = "10 qubits")
+data = pd.read_excel(r'.\temperature_data.xlsx', sheet_name = "15 qubits")
 
 energy = np.array(data['energy'])
 deg = np.array(data['deg'])
@@ -29,10 +29,10 @@ def boltzmann_distribution(x,T):
     y = np.float64(-(x[0])/(k_B * T))
     return x[1]*(mt.e ** y) / Z(x, T)
 
-x_model = np.linspace(min(energy), max(energy), 77)
-y_data = num_occ/50000
+x_model = np.linspace(min(energy), max(energy), 176)
+y_data = num_occ/25000
 
-popt, pcov = curve_fit(boltzmann_distribution, [energy, deg], y_data, p0 = [1])
+popt, pcov = curve_fit(boltzmann_distribution, [energy, deg], y_data, p0 = [10])
 
 print(popt)
 print(pcov)
@@ -45,7 +45,7 @@ plt.scatter(energy, y_data, label="Energy Distribution")
 plt.xlabel("Energy (J)")
 plt.ylabel("Occurrences")
 
-plt.savefig('fit10.pdf')
-plt.savefig('fit10.png')
+plt.savefig('fit15.pdf')
+plt.savefig('fit15.png')
 
 plt.show()
