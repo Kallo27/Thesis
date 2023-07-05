@@ -3,7 +3,7 @@ import pandas as pd
 import math as mt
 import matplotlib.pyplot as plt
 
-data = pd.read_excel(r'.\energies_kp.xlsx', sheet_name = "probability")
+data = pd.read_excel(r'.\energies_kp.xlsx', sheet_name = "probability2")
 
 n_qubits = np.array(data['n_qubits'])
 e0 = np.array(data['e0'])/5000
