@@ -19,8 +19,8 @@ s3_s3 = np.kron(s3, s3)
 
 # objective function parameters
 
-biases = np.array([0.1  , 0.8])
-coupling_strengths = 0.5
+biases = np.array([0.1  , 0.2])
+coupling_strengths = -0.4
 
 # QPU anneal parameters
 
@@ -92,10 +92,14 @@ print('The band gap is', minimum_gap, 'GHz and occurs when s =', t_min)
 # drawing
 
 plt.grid()
-plt.plot(s, e0, c = 'black')
-plt.plot(s, e1, c = 'yellow')
-plt.plot(s, e2, c = 'purple')
-plt.plot(s, e3, c = 'green')
+e_0, = plt.plot(s, e0, c = 'black', label='ground state')
+e_1, = plt.plot(s, e1, c = 'red', label='first excited state')
+e_2, = plt.plot(s, e2, c = 'yellow', label='second excited state')
+e_3, = plt.plot(s, e3, c = 'green', label='third excited state')
+
 plt.xlabel("s = t/tA")
 plt.ylabel("Energy (J)")
+
+plt.legend(handles = [e_0, e_1, e_2, e_3], loc = 'upper right')
+
 plt.show()
